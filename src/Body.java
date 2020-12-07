@@ -18,4 +18,12 @@ public class Body {
     public String getText() {
         return text;
     }
+
+    public String getBody() {
+        return this.text;
+    }
+
+    public String getCreatorString() {
+        return this.creator.getUser();
+    }
 }
