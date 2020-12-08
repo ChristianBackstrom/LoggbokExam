@@ -15,6 +15,10 @@ public class Model {
 
     }
 
+    public void setLogg(Body body){
+        view.setLogg(body);
+    }
+
     public void saveCurrent(){
         save.saveBody(this.currentBody);
     }
