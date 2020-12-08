@@ -27,6 +27,7 @@ public class Model {
 
     private class saveListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
+            currentBody = view.getCurrentLogg();
             saveCurrent();
         }
     }

@@ -19,10 +19,6 @@ public class Body {
         return text;
     }
 
-    public String getBody() {
-        return this.text;
-    }
-
     public String getCreatorString() {
         return this.creator.getUser();
     }
