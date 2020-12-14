@@ -6,11 +6,10 @@ import java.sql.SQLException;
 
 public class Model {
     private Body currentBody;
-    private Save save;
     private MVC view;
     private database db;
 
-    public Model(Save save){
+    public Model(){
         this.db = new database();
         this.view = new MVC();
         this.view.addDBLoadListener(new loadDBListener());
@@ -18,7 +17,6 @@ public class Model {
         this.view.addLoadListener(new loadListener());
         this.view.addSaveListener(new saveListener());
         this.currentBody = view.getCurrentLogg();
-        this.save = new Save();
 
     }
 
@@ -28,7 +26,6 @@ public class Model {
 
     public void saveCurrent(Body body) throws SQLException {
         db.insertData(body);
-        save.saveBody(body);
     }
 
     private class loadListener implements ActionListener {
