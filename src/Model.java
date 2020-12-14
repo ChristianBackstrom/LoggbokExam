@@ -33,6 +33,7 @@ public class Model {
             String FileName = JOptionPane.showInputDialog(null,"Write the name of the file");
             try {
                 currentBody = fileManager.loadFile(FileName);
+                view.setLogg(currentBody);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -43,6 +44,7 @@ public class Model {
         public void actionPerformed(ActionEvent e){
             String FileName = JOptionPane.showInputDialog(null, "Write the name of the file");
             try {
+                currentBody = view.getCurrentLogg();
                 fileManager.saveFile(currentBody, FileName);
             } catch (IOException ex) {
                 ex.printStackTrace();

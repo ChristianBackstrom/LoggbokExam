@@ -28,10 +28,7 @@ public class fileManager {
             text = rdr.nextLine();
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "File does not exist");
-        } finally {
-
         }
-
         return new Body(author, text);
     }
 }
