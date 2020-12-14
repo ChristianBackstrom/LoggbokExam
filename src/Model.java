@@ -24,6 +24,7 @@ public class Model {
 
     public void saveCurrent(Body body) throws SQLException {
         db.insertData(body);
+        save.saveBody(body);
     }
 
     private class loadListener implements ActionListener {

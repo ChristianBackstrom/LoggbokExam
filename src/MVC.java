@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class MVC extends JFrame{
     private JPanel panel;
-    private JTextArea body = new JTextArea("här kommer det stå text :)", 80, 80);
+    private JTextArea body = new JTextArea("här kommer det stå text :)", 40, 80);
     private JTextField author = new JTextField("här kommer det stå författare", 80);
     private JButton saveButton;
     private JButton loadButton;
@@ -18,6 +18,7 @@ public class MVC extends JFrame{
         this.panel.add(this.loadNumber);
         this.panel.add(this.saveButton);
         this.panel.add(this.author);
+        this.body.setLineWrap(true);
         this.panel.add(this.body);
         this.add(this.panel);
         this.setVisible(true);
