@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class MVC extends JFrame{
     private JMenuBar menuBar = new JMenuBar();
-    private JMenu menu = new JMenu("File");
+    private JMenu menu = new JMenu("File", true);
     private JMenuItem save = new JMenuItem("Save");
     private JMenuItem load = new JMenuItem("Load");
     private JPanel panel;
@@ -18,11 +18,9 @@ public class MVC extends JFrame{
         this.panel = new JPanel();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000,800);
-        this.setJMenuBar(menuBar);
         this.menu.add(save);
         this.menu.add(load);
         this.menuBar.add(menu);
-        this.setJMenuBar(menuBar);
         this.panel.add(menuBar);
         this.panel.add(this.loadButton);
         this.panel.add(this.loadNumber);
@@ -31,6 +29,7 @@ public class MVC extends JFrame{
         this.body.setLineWrap(true);
         this.panel.add(this.body);
         this.add(this.panel);
+        this.setJMenuBar(menuBar);
         this.setVisible(true);
     }
 
