@@ -1,8 +1,8 @@
 public class Body {
-    User creator;
+    String creator;
     String text;
 
-    public Body(User creator, String text) {
+    public Body(String creator, String text) {
         this.creator = creator;
         this.text = text;
     }
@@ -12,14 +12,10 @@ public class Body {
     }
 
     public String getCreator() {
-        return this.creator.getUser();
+        return this.creator;
     }
 
     public String getText() {
         return text;
-    }
-
-    public String getCreatorString() {
-        return this.creator.getUser();
     }
 }

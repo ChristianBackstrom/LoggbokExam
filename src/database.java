@@ -27,10 +27,10 @@ public class database {
 
         rset = stmt.executeQuery(bodySelect);
 
-            while(rset.next())
-                body = rset.getString("body");
+        while(rset.next())
+            body = rset.getString("body");
 
-        return new Body(new User(author), body);
+        return new Body(author, body);
     }
 
     public void insertData(Body body1) throws SQLException{
@@ -43,7 +43,7 @@ public class database {
         Statement stmt = conn.createStatement();
 
         String body = body1.getText();
-        String author = body1.getCreatorString();
+        String author = body1.getCreator();
 
         String loggSave = "INSERT INTO logg (author, body) VALUES ( '" + author + "','" + body + "')";
 

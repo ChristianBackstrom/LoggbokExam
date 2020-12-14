@@ -3,6 +3,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MVC extends JFrame{
+    private JMenuBar menuBar = new JMenuBar();
+    private JMenu menu = new JMenu("File");
+    private JMenuItem save = new JMenuItem("Save");
+    private JMenuItem load = new JMenuItem("Load");
     private JPanel panel;
     private JTextArea body = new JTextArea("här kommer det stå text :)", 40, 80);
     private JTextField author = new JTextField("här kommer det stå författare", 80);
@@ -14,6 +18,12 @@ public class MVC extends JFrame{
         this.panel = new JPanel();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(1000,800);
+        this.setJMenuBar(menuBar);
+        this.menu.add(save);
+        this.menu.add(load);
+        this.menuBar.add(menu);
+        this.setJMenuBar(menuBar);
+        this.panel.add(menuBar);
         this.panel.add(this.loadButton);
         this.panel.add(this.loadNumber);
         this.panel.add(this.saveButton);
@@ -25,10 +35,18 @@ public class MVC extends JFrame{
     }
 
     void addLoadListener(ActionListener listenForLoadListener) {
-        this.loadButton.addActionListener(listenForLoadListener);
+        this.load.addActionListener(listenForLoadListener);
     }
 
     void addSaveListener(ActionListener listenForSaveListener){
+        this.save.addActionListener(listenForSaveListener);
+    }
+
+    void addDBLoadListener(ActionListener listenForLoadListener) {
+        this.loadButton.addActionListener(listenForLoadListener);
+    }
+
+    void addDBSaveListener(ActionListener listenForSaveListener){
         this.saveButton.addActionListener(listenForSaveListener);
     }
 
@@ -57,12 +75,12 @@ public class MVC extends JFrame{
     }
 
     public Body getCurrentLogg(){
-        return new Body(new User(author.getText()), body.getText());
+        return new Body(author.getText(), body.getText());
     }
 
     public void setLogg(Body body){
         this.body.setText(body.getText());
-        this.author.setText(body.getCreatorString());
+        this.author.setText(body.getCreator());
     }
 
 }

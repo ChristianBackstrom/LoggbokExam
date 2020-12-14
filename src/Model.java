@@ -1,5 +1,7 @@
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class Model {
@@ -11,6 +13,8 @@ public class Model {
     public Model(Save save){
         this.db = new database();
         this.view = new MVC();
+        this.view.addDBLoadListener(new loadDBListener());
+        this.view.addDBSaveListener(new saveDBListener());
         this.view.addLoadListener(new loadListener());
         this.view.addSaveListener(new saveListener());
         this.currentBody = view.getCurrentLogg();
@@ -29,6 +33,30 @@ public class Model {
 
     private class loadListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
+            String FileName = JOptionPane.showInputDialog(null,"Write the name of the file");
+            try {
+                currentBody = fileManager.loadFile(FileName);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    private class saveListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+            String FileName = JOptionPane.showInputDialog(null, "Write the name of the file");
+            try {
+                fileManager.saveFile(currentBody, FileName);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    private class loadDBListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
             try {
                 view.setLogg(db.getData(Integer.parseInt(view.getLoadNumber())));
             } catch (SQLException ex) {
@@ -37,7 +65,7 @@ public class Model {
         }
     }
 
-    private class saveListener implements ActionListener {
+    private class saveDBListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             currentBody = view.getCurrentLogg();
             try {
