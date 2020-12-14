@@ -1,36 +1,37 @@
 import javax.swing.*;
 import java.io.*;
+import java.util.Scanner;
 
 public class fileManager {
 
     public static void saveFile(Body body, String fileName) throws IOException {
-        ObjectOutputStream out = null;
+
+        PrintWriter outputStream = new PrintWriter(fileName);
 
         try {
-            out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fileName)));
-            out.writeObject(body.getCreatorString());
-        } catch (IOException e) {
-            e.printStackTrace();
+            outputStream.println(body.getCreator());
+            outputStream.println(body.getText());
         } finally {
-            out.close();
+            outputStream.close();
         }
     }
 
-    public static Body loadFile(String fileName) throws IOException, ClassNotFoundException {
+    public static Body loadFile(String fileName) throws FileNotFoundException {
 
-        ObjectInputStream in = null;
-        Body body = null;
+        String text = "not a valid";
+        String author = "not a valid";
 
         try {
-            in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fileName)));
-            body = (Body) in.readObject();
-            return body;
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "File does not exist" + "/n " + e.getMessage());
+            File file = new File(fileName);
+            Scanner rdr = new Scanner(file);
+            author = rdr.nextLine();
+            text = rdr.nextLine();
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "File does not exist");
         } finally {
-            in.close();
+
         }
 
-        return body;
+        return new Body(author, text);
     }
 }

@@ -38,8 +38,6 @@ public class Model {
                 currentBody = fileManager.loadFile(FileName);
             } catch (IOException ex) {
                 ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
             }
         }
     }
