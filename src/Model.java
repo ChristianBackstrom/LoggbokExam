@@ -55,7 +55,7 @@ public class Model {
     private class loadDBListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             try {
-                view.setLogg(db.getData(Integer.parseInt(view.getLoadNumber())));
+                view.setLogg(db.getData(Integer.parseInt(JOptionPane.showInputDialog(null, "write the id of the log"))));
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
