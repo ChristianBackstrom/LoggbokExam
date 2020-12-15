@@ -45,6 +45,7 @@ public class database {
         String body = body1.getText();
         String author = body1.getCreator();
 
+        //Mysql command for inserting data into table in database
         String loggSave = "INSERT INTO logg (author, body) VALUES ( '" + author + "','" + body + "')";
 
         stmt.executeUpdate(loggSave);

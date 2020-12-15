@@ -12,6 +12,7 @@ public class Model {
     public Model(){
         this.db = new database();
         this.view = new MVC();
+        //adds action listeners to menuItems
         this.view.addDBLoadListener(new loadDBListener());
         this.view.addDBSaveListener(new saveDBListener());
         this.view.addLoadListener(new loadListener());
@@ -20,12 +21,10 @@ public class Model {
 
     }
 
-    public void saveCurrent(Body body) throws SQLException {
-        db.insertData(body);
-    }
-
+    //this loads a file with the specified name
     private class loadListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
+            //specifies what the name of the file is
             String FileName = JOptionPane.showInputDialog(null,"Write the name of the file");
             try {
                 currentBody = fileManager.loadFile(FileName);
@@ -36,8 +35,10 @@ public class Model {
         }
     }
 
+    //saves the currentBody to a file with specified name
     private class saveListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
+            //filename will be specified
             String FileName = JOptionPane.showInputDialog(null, "Write the name of the file");
             try {
                 currentBody = view.getCurrentLogg();
@@ -48,6 +49,7 @@ public class Model {
         }
     }
 
+    //loads body from the specified id from the database to the current body and shows it.
     private class loadDBListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             try {
@@ -58,11 +60,12 @@ public class Model {
         }
     }
 
+    //will save the currentBody showing to the database
     private class saveDBListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             currentBody = view.getCurrentLogg();
             try {
-                saveCurrent(currentBody);
+                db.insertData(currentBody);
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
