@@ -49,22 +49,6 @@ public class MVC extends JFrame{
         this.saveButton.addActionListener(listenForSaveListener);
     }
 
-    public void setAuthor(String Author) {
-        this.author.setText(Author);
-    }
-
-    public void setBody(String body) {
-        this.body.setText(body);
-    }
-
-    public String getAuthor() {
-        return author.getText();
-    }
-
-    public String getBody() {
-        return body.getText();
-    }
-
     public Body getCurrentLogg(){
         return new Body(author.getText(), body.getText());
     }

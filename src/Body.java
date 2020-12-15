@@ -7,10 +7,6 @@ public class Body {
         this.text = text;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
     public String getCreator() {
         return this.creator;
     }

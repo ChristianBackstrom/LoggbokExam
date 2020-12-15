@@ -20,10 +20,6 @@ public class Model {
 
     }
 
-    public void setLogg(Body body){
-        view.setLogg(body);
-    }
-
     public void saveCurrent(Body body) throws SQLException {
         db.insertData(body);
     }
