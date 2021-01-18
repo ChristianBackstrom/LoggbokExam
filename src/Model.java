@@ -49,6 +49,7 @@ public class Model {
         }
     }
 
+
     //loads body from the specified id from the database to the current body and shows it.
     private class loadDBListener implements ActionListener {
         public void actionPerformed(ActionEvent e){

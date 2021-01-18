@@ -5,6 +5,13 @@ import java.util.Scanner;
 
 public class database {
 
+    /**
+     * Returns data from the database with a certain id. It will use the id given to retrieve the author and body text from a database specified in the databaseCondig.java file
+     * @param i
+     * @return
+     * @throws SQLException
+     */
+
     public Body getData(int i) throws SQLException {
 
         Connection conn = DriverManager.getConnection(
